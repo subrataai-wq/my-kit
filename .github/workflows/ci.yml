@@ -1,0 +1,38 @@
+name: CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  native-check:
+    name: Native Verification (Windows & Linux)
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          components: clippy
+      - name: Cargo Check Workspace
+        run: cargo check --workspace
+      - name: Cargo Test Workspace
+        run: cargo test --workspace
+      - name: Clippy Lints
+        run: cargo clippy --workspace -- -D warnings
+
+  wasm-check:
+    name: WebAssembly Target Check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          targets: wasm32-unknown-unknown
+      - name: Check my-kit-core on wasm32 (All Default Features)
+        run: cargo check -p my-kit-core --target wasm32-unknown-unknown
+

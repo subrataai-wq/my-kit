@@ -1,0 +1,15 @@
+[package]
+name = "my-kit-ui"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+authors.workspace = true
+description = "Dioxus 0.7 accessible UI components, design tokens, and reactive state hooks"
+
+[dependencies]
+my-kit-core = { path = "../my-kit-core", default-features = true }
+compact_str = { workspace = true }
+dioxus = { version = "0.7.1" }
+serde = { version = "1.0", features = ["derive"] }
+serde_json = { version = "1.0" }
+tokio = { version = "1", features = ["time", "sync"] }

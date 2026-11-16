@@ -1,0 +1,27 @@
+[application]
+name = "Prelude"
+default_platform = "desktop"
+
+[web.app]
+# HTML title tag content
+title = "Prelude"
+
+# include `assets` in web platform
+[web.resource]
+# Additional CSS style files
+style = []
+
+# Additional JavaScript files
+script = []
+
+[web.resource.dev]
+# Javascript code file
+# serve: [dev-server] only
+script = []
+
+[bundle]
+identifier = "com.prelude.app"
+publisher = "Prelude"
+copyright = "Copyright © 2026 Prelude"
+short_description = "Official desktop application by Prelude"
+icon = ["assets/favicon.ico"]

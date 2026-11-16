@@ -1,0 +1,19 @@
+[package]
+name = "my-kit-template"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+authors.workspace = true
+description = "Starter scaffold and reference app for studio client projects"
+
+[dependencies]
+dioxus = { version = "0.7.1" }
+my-kit-core = { path = "../my-kit-core" }
+my-kit-ui = { path = "../my-kit-ui" }
+serde = { version = "1.0", features = ["derive"] }
+
+[features]
+default = ["web"]
+web = ["dioxus/web"]
+desktop = ["dioxus/desktop"]
+mobile = ["dioxus/mobile"]
